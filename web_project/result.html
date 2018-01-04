@@ -153,15 +153,19 @@ return true;
 	var ÖV_total=(ÖV* 100/(fuss+rad+PKW+ÖV+sonst));
 	var sonst_total=(sonst* 100/(fuss+rad+PKW+ÖV+sonst));
 	
-	 createCookie("fuss_total_result", fuss_total);
+	 /*
+	 createCookie("fuss_total_result", 20);
+	 createCookie("rad_total_result", 11);
+	 createCookie("PKW_total_result", 56);
+	 createCookie("OV_total_result", 12);
+	 createCookie("sonst_total_result",1);
+	*/
+     createCookie("fuss_total_result", fuss_total);
 	 createCookie("rad_total_result", rad_total);
 	 createCookie("PKW_total_result", PKW_total);
 	 createCookie("OV_total_result", ÖV_total);
 	 createCookie("sonst_total_result", sonst_total);
-	 
-	 
 	
-
 	
 		  var data_1 = {
 					items: [{label:'FUSS', data : fuss_total+.01 },
@@ -172,7 +176,7 @@ return true;
 					};
 		  // FLOT
 		  jQuery(function () {
-		    jQuery.plot(jQuery("#Ihre_pie_graph"), data_1.items, {
+		    jQuery.plot(jQuery("#Your_pie_graph"), data_1.items, {
 				pie: { 
 					show: true, 
 					pieStrokeLineWidth: 2, 
@@ -285,7 +289,7 @@ function cookieFunction() {
 	<tr><th align="char" face="arial">Private Car [%]</th> <th>  <input type="text" name="PKW" size="25" style="text-align:center; font-family:arial; font-weight:bold"></th> <th> 56 </th></tr>
 	<tr><th align="char" face="arial">Public Transport [%]</th> <th><input type="text" name="ÖV" size="25" style="text-align:center; font-family:arial; font-weight:bold"></th><th> 12</th></td></tr>
 	<tr><th align="char"face="arial">Others [%]</th> <th><input type="text" name="sonst" size="25" style="text-align:center; font-family:arial; font-weight:bold"></th><th> 1</th></tr>
-	<tr height="280"><th align="char"face="arial">Shares of Transportation</th><th valign="top"><div id="Ihre_pie_graph" style="width:170px;height:175px"></th><th valign="top"><div id="MOP_pie_graph" style="width:170px;height:175px"></div></th></tr>
+	<tr height="280"><th align="char"face="arial">Shares of Transportation</th><th valign="top"><div id="Your_pie_graph" style="width:170px;height:175px"></th><th valign="top"><div id="MOP_pie_graph" style="width:170px;height:175px"></div></th></tr>
 	
 	<tr>
 	<td colspan="11" align="center" valign="bottom"><input type="submit" value="Next"></td>

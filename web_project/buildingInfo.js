@@ -1,9 +1,3 @@
-
-function result() {
-return true;
-}
-		
-	
 var data = {
 			items: [{label:'W', data: 20},
 					{label:'B', data: 11},
@@ -39,28 +33,31 @@ var data = {
 			})
 		  });
 		  
-		  
 	    var fuss_total= parseInt(readCookie("fuss_total_result"));
 		var rad_total= parseInt(readCookie("rad_total_result"));
 		var pkw_total= parseInt(readCookie("PKW_total_result"));
 		var ov_total= parseInt(readCookie("OV_total_result"));
 		var sonst_total= parseInt(readCookie("sonst_total_result"));
 		
+		
+		var options = {
+  labelInterpolationFnc: function(value) {
+    return value[0]
+  }
+};
 
-	
-		 
-var data_1 = {
-					items: [{label:'W', data : fuss_total+.01 },
-						   {label:'B', data : rad_total+.01},
-						   {label:'C', data : pkw_total+.01},
-						   {label:'O', data : ov_total+.01},
-						   {label:'S', data : sonst_total +.01}]
-					};
+		
+        var data_1 = {
+			items: [{label:'W', data : fuss_total+.01},
+					{label:'B', data : rad_total+.01},
+					{label:'C', data : pkw_total+.01},
+					{label:'O', data : ov_total+.01},
+					{label:'S', data : sonst_total +.01}]
+		    };
 		  // FLOT
 		  jQuery(function () {
-		    jQuery.plot(jQuery("#You_pie_graph"), data_1.items, {
+		    jQuery.plot(jQuery("#Your_pie_graph"), data_1.items, {
 				pie: { 
-					
 					show: true, 
 					pieStrokeLineWidth: 2, 
 					pieStrokeColor: '#FFF', 
@@ -71,15 +68,21 @@ var data_1 = {
 					labelOffsetFactor: 4/5, 		// part of radius (default 5/6)
 				 //   labelOffset: 10,        		// offset in pixels if > 0 then labelOffsetFactor is ignored
 					labelBackgroundOpacity: 0.55, 	// default is 0.85
-					labelFormatter: function(serie){// default formatter is "serie.label"
-					return serie.label +'<br/>'+Math.round(serie.percent)+'%';
+					labelFormatter: function(serie){
+						// default formatter is "serie.label"
+					if(serie.label==null || serie.label==""){
+						return '';
+					}
+					else{
+					return serie.label +'<br/>'+Math.round(serie.percent)+'%';	
+					  }
+					
 					}
 				},
 				legend: {
 					show: true, 
-					
-					verticalAlign: "left", 
-			        horizontalAlign: "left",
+					verticalAlign:"", 
+			        horizontalAlign:"",
 					//position:"center",
 					backgroundOpacity:0
 				},
@@ -89,7 +92,8 @@ var data_1 = {
 						fontSize: 16
 						}
 			})
-		  });
+		  });	
+
 
 var mymap = L.map('mapid').setView([23.825656, 90.371107], 15);
 
@@ -117,7 +121,10 @@ var f3="<table border=0>"+
 "<th>Name</th> <th>Type</th> <th>Description</th> <th>Picture</th> <tr><td>Sport Club</td><td>Sports</td><td>Training 3 floor Building</td> <td><img src=cityClub.jpg height=55 width=55></td></tr> <tr><td>Floor One</td><td>Shopping</td><td> Shopping (Number of Shops 13) </td> <td><img src=floor.jpg height=55 width=55></td> </tr> <tr><td>Floor Two</td><td>Trining & Schooling </td><td>Sports center  </td> <td><img src=floor.jpg height=55 width=55></td> </tr>  <tr><td>Floor Three</td><td>Payer Room</td><td>Perfome Payer</td> <td><img src=floor.jpg height=55 width=55></td> </tr></table>";
  
  var f4="<table border=0>"+
-"<th>Name</th> <th>Type</th> <th>Description</th> <th>Picture</th> <tr><td>Sport Club</td><td>Sports</td><td>Training 3 floor Building</td> <td><img src=cityClub.jpg height=55 width=55></td></tr> <tr><td>Floor One</td><td>Shopping</td><td> Shopping (Number of Shops 13) </td> <td><img src=floor.jpg height=55 width=55></td> </tr> <tr><td>Floor Two</td><td>Trining & Schooling </td><td>Sports center  </td> <td><img src=floor.jpg height=55 width=55></td> </tr>  <tr><td>Floor Three</td><td>Payer Room</td><td>Perfome Payer</td> <td><img src=floor.jpg height=55 width=55></td> </tr></table>";
+"<th>Name</th> <th>Type</th> <th>Description</th> <th>Picture</th> <tr><td>Shopping Center</td><td>Shopping</td><td>Shopping 8 floor Building</td> <td><img src=cityClub.jpg height=55 width=55></td></tr> <tr><td>Floor One</td><td>Shopping</td><td> Shopping (Number of Shops 13) </td> <td><img src=floor.jpg height=55 width=55></td> </tr> <tr><td>Floor Two</td><td>Trining & Schooling </td><td>Sports center  </td> <td><img src=floor.jpg height=55 width=55></td> </tr>  <tr><td>Floor Three</td><td>Payer Room</td><td>Perfome Payer</td> <td><img src=floor.jpg height=55 width=55></td> </tr></table>";
+
+var f5="<table border=0>"+
+"<th>Name</th> <th>Type</th> <th>Description</th> <th><tr><td>Molla Road</td><td>Primary</td><td>Pallabi bus station to My house</tr> <tr><td>Floor One</td><td>Shopping</td><td> Shopping (Number of Shops 13) </td>  </tr> <tr><td>Floor Two</td><td>Trining & Schooling </td><td>Sports center  </td></tr>  <tr><td>Floor Three</td><td>Payer Room</td><td>Perfome Payer</td> </tr></table>";
  
 	
 	L.polygon([
@@ -135,14 +142,6 @@ var f3="<table border=0>"+
 	]).addTo(mymap).bindPopup(f1);
 	
 	L.polygon([	
-	[23.823741, 90.364475],
-	[23.823931, 90.365506],
-	[23.822927, 90.365729],
-	[23.822714, 90.364529]
-	]).addTo(mymap).bindPopup(f3);
-	
-	
-	L.polygon([	
 	[23.823937, 90.365553],
     [23.824080, 90.366625],
     [23.823120, 90.366813],
@@ -151,11 +150,44 @@ var f3="<table border=0>"+
 	]).addTo(mymap).bindPopup(f2);
 	
 	L.polygon([	
+	[23.823741, 90.364475],
+	[23.823931, 90.365506],
+	[23.822927, 90.365729],
+	[23.822714, 90.364529]
+	]).addTo(mymap).bindPopup(f3);
+	
+	
+	L.polygon([	
 	[23.824257, 90.364452],
 	[23.824336, 90.364964],
 	[23.823983, 90.365036],
 	[23.823912, 90.364519]
 	]).addTo(mymap).bindPopup(f4);
+	
+var pointA=new L.LatLng(23.824331, 90.364334);
+var pointB=new L.LatLng(23.823856, 90.364350);
+var pointC=new L.LatLng(23.823981, 90.365381);
+var pointD=new L.LatLng(23.824194, 90.366549);
+var pointE=new L.LatLng(23.824376, 90.366628);
+var pointF=new L.LatLng(23.824809, 90.369175);
+var pointG=new L.LatLng(23.824980, 90.370192);
+var pointH=new L.LatLng(23.825112, 90.371061);
+var pointI=new L.LatLng(23.825379, 90.371011);
+var pointJ=new L.LatLng(23.825466, 90.371004);
+var pointK=new L.LatLng(23.825505, 90.371177);
+
+var pointList = [pointA, pointB,pointC, pointD,pointE,pointF,pointG, pointH,pointI, pointJ, pointK];
+
+	var firstpolyline = new L.Polyline(pointList, {
+    color: 'green',
+    weight: 5,
+    opacity: 0.5,
+    smoothFactor: 1
+	
+});
+firstpolyline.bindPopup(f5).addTo(mymap);
+	
+	
 	
 	
 	/*
@@ -163,10 +195,10 @@ var f3="<table border=0>"+
 		
 		layer.bindPopup("<h1> i am here to zzz </h1>");
 	};
-	*/
+	
 	var cityLayer=L.geoJSON(city).addTo(mymap);
 	//mapid.fitBounds(cityLayer.getElementById());
-	
+	*/
 	
 	var popup = L.popup();
 

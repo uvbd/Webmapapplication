@@ -17,31 +17,26 @@
 	
 	<script language="javascript" type="text/javascript" src="js/flot/jquery.js"></script>
     <script language="javascript" type="text/javascript" src="js/flot/jquery.flot.pie.pack.js"></script>
+	<script src="https://cdn-webgl.eegeo.com/eegeojs/early_access/latest/eegeo.js"></script>
 	
 </head>
 
-<body onload="result()">
+<body>
 <table> 
 <tr>
-<td width="15%">
+<td width="25%">
 <table>
 <tr>
-<td><h3>My Community [Pallabi]</h3>
-<p> Pallabi (Bengali: পল্লবি) is a Thana of Dhaka District in the Division of Dhaka, Bangladesh.
-Pallabi is located at 23.495°N 90.215°E. Its total area is 17 km².This Pallabi has a population of 364000. Males constitute 52.74% of the population, and females 47.26%. Pallabi has an average literacy rate of 56.23%, and the national average of 32.4% literate.Pallabi has 1 Unions/Wards, 16+27 Mauzas/Mahallas, and 0 villages. </p>
+<td><h3>About Dhaka City</h3>
+<p> Dhaka,formerly spelled as Dacca in English,is the capital and one of the oldest cities of Bangladesh.After Mughals, British ruled the region for over 150 years until the independence of India. In 1947,Dhaka became the capital of the East Bengal province under the dominion of Pakistan. After the independence of Bangladesh in 1971,Dhaka became the capital of the new state.Dhaka has 16 million inhabitance and its cover 306.4 km².</p>
 </td>
 </tr>
 <tr>
-<td><img src="atif.jpg" alt="Mountain View" height="240" width="210"></td>
+<td><img src="building1.gif" alt="Mountain View" height="180%" width="100%"></td>
 </tr>
 </table>
-
-
 </td>
-
-
-
-<td> 
+<td width="25%"> 
 <ul>
   <li><a class="active" href="#home">Home</a></li>
    <li><a href="tag1.html">Mobility Survey</a></li>
@@ -54,11 +49,11 @@ Pallabi is located at 23.495°N 90.215°E. Its total area is 17 km².This Pallab
 </td>
 
 <td width="25%" > 
-<form name="myForm" action="tag2.html" method="post" onsubmit="return formValidation()" >
+<form name="myForm" action="tag1.html" method="post" onsubmit="return formValidation()" >
 
 <table>
 <tr>
-<td><h4>Average mobility distribution[%]</h4></td>
+<td><h4>Average mobility distribution[%] in Germany</h4></td>
 </tr>
 <tr>
 <td><div id="MOP_pie_graph" class="grap"></div></td>
@@ -68,13 +63,12 @@ Pallabi is located at 23.495°N 90.215°E. Its total area is 17 km².This Pallab
 
 <table>
 <tr>
-<td><h4>Your mobility distribution[%]</h4></td>
+<td><input type="button" onclick="location.href='tag1.html';" value="Now calculate your mobility distribution[%]" /></td>
 </tr>
 <tr>
-<td><div id="You_pie_graph" class="grap" ></div></td>
+<td><div id="Your_pie_graph" class="grap"></div></td>
 </tr>
 </table>
-
 
 </form>
 
@@ -84,6 +78,7 @@ Pallabi is located at 23.495°N 90.215°E. Its total area is 17 km².This Pallab
 </table>
 <!-- map project javascript -->
    <script src="buildingInfo.js"></script>
+   
  <div id="footer" class="footer">Copyright © Islam & Sabrina Hska</div>
   
 </body>
